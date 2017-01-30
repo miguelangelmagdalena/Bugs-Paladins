@@ -1,8 +1,7 @@
 import csv
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-from plotly.graph_objs import *
-#init_notebook_mode()
-import numpy as np
+import plotly
+plotly.tools.set_credentials_file(username='miguelmagdalena', api_key='R5lLl86vAwfjjNDaVFlO')
+import plotly.graph_objs as go
 
 #Abrimos la hoja de calculo con la trabajaremos
 with open('student-mat.csv') as csvfile:
@@ -12,35 +11,68 @@ with open('student-mat.csv') as csvfile:
 	g1		= [] 
 	g2		= []  
 	
+	#Guardamos las edades y resultados de primer periodo g1 y segundo g2 
 	for row in readCSV:
 		age = row[2] 
 		g1_data = row[30] 
-		g2_data = [31]
+		g2_data = row[31]
 		
 		ages.append(age)
 		g1.append(g1_data)
-		g2.append(g1_data)
+		g2.append(g2_data)
 
 #mostramos datos del csv
+'''
 print ("Edades de alumnos y resultados de examenes g1 y g2")
 print (ages)
 print ("\n\n")
 print (g1)
 print ("\n\n")
 print (g2) 
-
-
-#hacemos algunos calculos con la data
 '''
-n= 1000
-random_x = np.random.randn(n)
-random_y = np.random.randn(n)
 
-trace = Scatter(
-	x = random_x,
-	y = random_y,
-	mode = 'markers'
+#Hacemos un diagrama de dispersion
+trace = go.Scatter(
+	x = g1,
+	y = g2,
+	mode = 'markers',
+	name = 'Relacion entre G1 y G2',
+	marker = dict(
+		size 	= 10,
+		color 	= 'rgba(152, 0, 0, .8)',
+		line 	= dict(
+			width = 2,
+			color = 'rgba(0,0,0)'
+		)
+	)
 )
+
 data = [trace]
-iplot(data)
-'''
+
+#plotly.plotly.iplot(data, filename = 'Diagrama de dispersion de resultados de examenes G1 y G2')
+
+#Hacemos un histograma
+ages2 = ages
+unique_ages = []
+total = []
+tam1 = len(ages2)
+
+#Buscamos las edades sin repetirse
+unique_ages = list(set(ages))
+i=0
+#Contamos el total de cada edad
+while(i< len(unique_ages)):
+	cantidad = str(ages.count(unique_ages[i]))
+	total.append(cantidad)
+	i=i+1
+
+#print(unique_ages)
+#print("\n\n")
+#print(total)
+
+data2 = [go.Bar(
+			x = unique_ages,
+			y = total
+		)]
+
+plotly.plotly.iplot(data2,filename='Diagrama de barras de la edad')
