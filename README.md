@@ -1,9 +1,6 @@
-# lab_1
-Lab_1_Ciencia_de_datos
+# (URGENT) YING BUG, Cant enter in Stone Keep competitive 
+Today i was playing competitive, 160789866 and a character using ying was bot, but he was talking with us in the character selection.
 
-Datos del csv del laboratorio anterior con histograma de las edades de los alumnos y diagrama de dispersion entre el resultado en sus evaluaciones G1 y G2
+After 2 games, i choose ying for playing competitive 160807858 and the map was the same, Stone Keep. And the game disconnect me, I tried to reset the game like 5 times but I only could see the loading for Stone Keep and never could enter. The game after loading, always returns me to the lobby.
 
-Histograma: https://plot.ly/~miguelmagdalena/10/
-Diagrama de dispersion: https://plot.ly/~miguelmagdalena/8/relacion-entre-g1-y-g2/ 
-
-Miguel Magdalena
+I think this could be a bug.
